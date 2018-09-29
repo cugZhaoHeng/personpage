@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cug.dao.UserDao">
+	<select id="getUserById" resultType="com.cug.entity.User">
+		select * from user where id = #{id}
+	</select>
+	
+	<select id="getUserByName" resultType="com.cug.entity.User">
+		select * from user where username = #{username}
+	</select>
+	
+	<insert id="addUser" parameterType="com.cug.entity.User">
+		insert into user(username, password, sex, birthday, email, tel, activeCode, activeState, removeState) 
+		values(#{username}, #{password}, #{sex}, #{birthday}, #{email}, #{tel}, #{activeCode}, #{activeState}, #{removeState})
+	</insert>
+	
+	<select id="usernameIsRegistered" resultType="Integer">
+		select count(1) from user where username = #{username}
+	</select>
+	
+	<select id="emailIsRegistered" resultType="Integer">
+		select count(1) from user where email = #{email}
+	</select>
+	
+	<update id="active">
+		update user set activeState = '1' where username = #{username} and activeCode = #{activeCode}
+	</update>
+	
+	<update id="updateUserInfo" parameterType="com.cug.entity.User">
+		update user set sex=#{sex}, birthday=#{birthday}, tel=#{tel}, address=#{address}, headImage=#{headImage} where id=#{id}
+	</update>
+	
+	<select id="passwordIsTrue" resultType="Integer">
+		select count(1) from user where id = #{id} and password = #{password}
+	</select>
+	
+	<update id="updatePassword">
+		update user set password = #{password} where id = #{id}
+	</update>
+</mapper>
