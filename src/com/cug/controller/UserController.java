@@ -181,8 +181,8 @@ public class UserController {
 	// 处理上传的头像，返回保存后该图片的加密名称
      public String saveHeadImage( MultipartFile file, HttpServletRequest request) {
         //上传文件路径
-        //String path = request.getServletContext().getRealPath("/static/image/headImage");
-    	String path = "F:"+File.separator+"Icon"+File.separator+"headImage";
+        String path = request.getServletContext().getRealPath("/static/image/headImage");
+    	//String path = "F:"+File.separator+"Icon"+File.separator+"headImage";
         //上传文件名
         String filename = UUID.randomUUID() + file.getOriginalFilename();
         File filepath = new File(path,filename);

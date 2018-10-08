@@ -66,6 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		// 设置出生日期
 		$("#mdate").datebox('setValue', "${user.birthday}");
 		
+		// 图片回显
 		$("#headImage").change(function() {
 			var headImage = $("#headImage")[0].files[0];
 			$("#previewImage").attr('src', window.URL.createObjectURL(file));

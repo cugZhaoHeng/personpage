@@ -19,13 +19,14 @@
 		<!-- 首页顶部内容 -->
 		<div data-options="region:'north'" style="height: 50px;">
 			<div class="easyui-panel" style="padding: 5px;" border="false">
-				<a href="#" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-home'">首页</a> 
+				<a href="toIndex.do" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-home'">首页</a> 
 				<a href="#" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-book'">文章</a>
 				<a href="#" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-resume'">简历</a> 
 				<a href="#" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-diary'">日记</a>
 				<input class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:search" style="width:300px"></input>
-				<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-user'">
-				<img alt="" src="" id="headImage" width="25" height="25">
+				<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-more'">
+				<!-- <img alt="" src="" id="headImage" width="25" height="25"> -->
+					${user.username }
 				</a>
 				<div id="mm2" style="width:100px;">
 					<div><a href="javascript:lookUserInfo()">个人信息</a></div>
@@ -50,9 +51,9 @@
 	
 		var parentWidth = $(this).width();
 		var parentHeight = $(this).height();
-		
+		// 从服务器中获取该用户的头像
 		$(document).ready(function() {
-			$("#headImage").attr('src', "/img/${user.headImage}")
+			$("#headImage").attr('src', "/image/headImage/${user.headImage}")
 		})
 		// 搜索框事件
 		function search(value){
